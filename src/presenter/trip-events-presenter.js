@@ -23,7 +23,6 @@ export default class TripEventsPresenter {
   eventCreationFormComponent = new EventCreationFormView();
   eventDetailsComponent = new EventDetailsView();
 
-
   init = (tripEventsContainer, tripHeaderContainer) => {
     this.tripEventsContainer = tripEventsContainer;
     this.tripHeaderContainer = tripHeaderContainer;
