@@ -14,7 +14,7 @@ import {
   RenderPosition
 } from '../render.js';
 
-const FIRST_EVENTS_QUANTITY = 3;
+const NUMBERS = Array.of(1, 2, 3);
 
 export default class TripEventsPresenter {
   sortComponent = new SortView();
@@ -34,10 +34,10 @@ export default class TripEventsPresenter {
     render(new EventOffersView(), this.eventDetailsComponent.getElement());
     render(new EventDestinationView(), this.eventDetailsComponent.getElement());
 
-    for (let i = 0; i < FIRST_EVENTS_QUANTITY; i++) {
+    NUMBERS.forEach(() => {
       render(this.eventListItem, this.routeEventsListComponent.getElement());
       render(new RouteEventView(), this.eventListItem.getElement());
-    }
+    });
 
     render(new TripInfoView(), tripHeaderContainer, RenderPosition.AFTERBEGIN);
   };
