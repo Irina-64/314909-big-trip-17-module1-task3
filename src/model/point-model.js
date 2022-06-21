@@ -14,6 +14,7 @@ export default class PointModel extends Observable{
     this.#pointsApiService = pointsApiService;
     this.#destinationApiService = destinationApiService;
     this.#offersApiService = offersApiService;
+
   }
 
   get points() {return this.#points;}
@@ -93,6 +94,7 @@ export default class PointModel extends Observable{
       dateFrom: point['date_from'],
       dateTo: point['date_to'],
       isFavorite: point['is_favorite']
+
     };
 
     delete adaptedPoint['base_price'];
@@ -103,3 +105,4 @@ export default class PointModel extends Observable{
     return adaptedPoint;
   };
 }
+

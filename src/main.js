@@ -43,4 +43,3 @@ pointModel.init().finally(() => {
   render(newPointButtonComponent, tripMain);
   newPointButtonComponent.setClickHandler(handleNewPointButtonClick);
 });
-

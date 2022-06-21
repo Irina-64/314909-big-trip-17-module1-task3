@@ -100,3 +100,4 @@ export default class ItemListView extends AbstractView{
     this._callback.favoriteClick();
   };
 }
+
