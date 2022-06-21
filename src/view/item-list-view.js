@@ -1,42 +1,45 @@
 import AbstractView from '../framework/view/abstract-view.js';
 import dayjs from 'dayjs';
-import {humanizePointDate, getTimeDifference} from '../utils/date-utils.js';
+import { humanizePointDate, getTimeDifference } from '../utils/date-utils.js';
 
 
-const createNewItemListTemplate = (point, allOffers=[]) => {
+const createNewItemListTemplate = (point, allOffers = []) => {
   const { basePrice = 1100,
     dateFrom = '2019-07-10T22:55:56.845Z',
     dateTo = '2019-07-11T11:22:13.375Z',
-    destination = {name:'City'},
+    destination = { name: 'City' },
     isFavorite = true,
-    type ='taxi',
+    type = 'taxi',
     offers = []
   } = point;
 
-  const offerElementTemplate = (offer) => { if(offers.includes(offer.id)){
-    return (
-      `<li class="event__offer">
+  const offerElementTemplate = (offer) => {
+    if (offers.includes(offer.id)) {
+      return (
+        `<li class="event__offer">
     <span class="event__offer-title">${offer.title}</span>
     &plus;&euro;&nbsp;
     <span class="event__offer-price">${offer.price}</span>
     </li>`
-    );}};
+      );
+    }
+  };
 
-  const favorite =  isFavorite ? 'event__favorite-btn--active' : '';
+  const favorite = isFavorite ? 'event__favorite-btn--active' : '';
   const dateEvent = dayjs(dateFrom).format('D MMMM');
   const dateEventFrom = humanizePointDate(dateFrom);
   const dateEventTo = humanizePointDate(dateTo);
-  const timeDifference = getTimeDifference(dateFrom,dateTo);
+  const timeDifference = getTimeDifference(dateFrom, dateTo);
   const pointTypeOffer = () => allOffers.find((offer) => offer.type === type);
-  const pointOffer = () => pointTypeOffer()?pointTypeOffer().offers.map(offerElementTemplate).join(''):'';
+  const pointOffer = () => pointTypeOffer() ? pointTypeOffer().offers.map(offerElementTemplate).join('') : '';
   const pointOfferTemplate = pointOffer();
 
-  return( `<li class="trip-events__item"><div class="event">
+  return (`<li class="trip-events__item"><div class="event">
     <time class="event__date" datetime="2019-03-18">${dateEvent}</time>
     <div class="event__type">
       <img class="event__type-icon" width="42" height="42" src="img/icons/${type}.png" alt="Event type icon">
     </div>
-    <h3 class="event__title">${type} ${destination.name?destination.name:'City'}</h3>
+    <h3 class="event__title">${type} ${destination.name ? destination.name : 'City'}</h3>
     <div class="event__schedule">
       <p class="event__time">
         <time class="event__start-time" datetime="2019-03-18T10:30">${dateEventFrom}</time>
@@ -50,7 +53,7 @@ const createNewItemListTemplate = (point, allOffers=[]) => {
     </p>
     <h4 class="visually-hidden">Offers:</h4>
     <ul class="event__selected-offers">
-      
+
     ${pointOfferTemplate}
     </ul>
     <button class="event__favorite-btn ${favorite}" type="button">
@@ -66,11 +69,11 @@ const createNewItemListTemplate = (point, allOffers=[]) => {
 };
 
 
-export default class ItemListView extends AbstractView{
+export default class ItemListView extends AbstractView {
   #point = null;
   #offer = null;
 
-  constructor(point, offer){
+  constructor(point, offer) {
     super();
     this.#offer = offer;
     this.#point = point;

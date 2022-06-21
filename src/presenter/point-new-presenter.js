@@ -1,7 +1,7 @@
 import AddNewPointView from '../view/add-new-point-view.js';
-import {render, remove, RenderPosition} from '../framework/render.js';
-import {UserAction, UpdateType} from '../const.js';
-import {isEscapeKey} from '../utils/date-utils.js';
+import { render, remove, RenderPosition } from '../framework/render.js';
+import { UserAction, UpdateType } from '../const.js';
+import { isEscapeKey } from '../utils/date-utils.js';
 
 export default class PointNewPresenter {
   #pointContainer = null;
@@ -16,7 +16,7 @@ export default class PointNewPresenter {
     this.#pointChange = pointChange;
   }
 
-  init = (callback, offers, destinations) =>{
+  init = (callback, offers, destinations) => {
     this.#destroyCallback = callback;
     this.#offers = offers;
     this.#destinations = destinations;

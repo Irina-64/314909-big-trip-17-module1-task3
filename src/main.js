@@ -1,13 +1,13 @@
 import ListPresenter from './presenter/list-presenter.js';
 import TripInfo from './view/trip-info-view.js';
-import {render} from './framework/render.js';
+import { render } from './framework/render.js';
 import PointModel from './model/point-model.js';
 import FilterModel from './model/filter-model.js';
 import FilterPresenter from './presenter/filters-presenter.js';
 import NewPointButtonView from './view/new-point-button-view.js';
-import PointApiService from './api-sevices/point-api-service.js';
-import DestinationApiService from './api-sevices/destinations-api-service.js';
-import OffersApiService from './api-sevices/offers-api-service.js';
+import PointApiService from './api-services/point-api-service.js';
+import DestinationApiService from './api-services/destinations-api-service.js';
+import OffersApiService from './api-services/offers-api-service.js';
 
 const AUTHORIZATION = 'Basic zhHM9Rz3X4Knf1';
 const END_POINT = 'https://17.ecmascript.pages.academy/big-trip';
@@ -27,7 +27,7 @@ const listPresenter = new ListPresenter(tripEventsElement, pointModel, filterMod
 const filterPresenter = new FilterPresenter(filtersElement, filterModel, pointModel);
 
 
-render(new TripInfo(),tripMain, 'afterbegin');
+render(new TripInfo(), tripMain, 'afterbegin');
 const handleNewPointFormClose = () => {
   newPointButtonComponent.element.disabled = false;
 };

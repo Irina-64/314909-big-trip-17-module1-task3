@@ -1,8 +1,8 @@
 import ItemListView from '../view/item-list-view.js';
 import EditPointView from '../view/edit-point-view.js';
-import {render, replace, remove} from '../framework/render.js';
-import {UserAction, UpdateType} from '../const.js';
-import {isEscapeKey} from '../utils/date-utils.js';
+import { render, replace, remove } from '../framework/render.js';
+import { UserAction, UpdateType } from '../const.js';
+import { isEscapeKey } from '../utils/date-utils.js';
 const Mode = {
   DEFAULT: 'DEFAULT',
   EDITING: 'EDITING',
@@ -25,7 +25,7 @@ export default class PointPresenter {
     this.#modeChange = modeChange;
   }
 
-  init = (offers, destinations, point) =>{
+  init = (offers, destinations, point) => {
     this.#point = point;
     this.#offers = offers;
     this.#destinations = destinations;
@@ -34,7 +34,7 @@ export default class PointPresenter {
     const preEditPointComponent = this.#EditPointComponent;
 
     this.#pointComponent = new ItemListView(this.#point, this.#offers);
-    this.#EditPointComponent = new EditPointView( this.#offers, this.#destinations, this.#point);
+    this.#EditPointComponent = new EditPointView(this.#offers, this.#destinations, this.#point);
 
     this.#pointComponent.setEditClickHandler(this.#handleToEditClick);
     this.#pointComponent.setFavoriteClickHandler(this.#handleFavoriteClick);
@@ -139,7 +139,7 @@ export default class PointPresenter {
 
   #handleFormSubmit = (update) => {
     const isMinorUpdate = this.#point.type !== update.type ||
-this.#point.destination.name !== update.destination.name;
+      this.#point.destination.name !== update.destination.name;
 
     this.#pointChange(
       UserAction.UPDATE_POINT,
@@ -152,7 +152,7 @@ this.#point.destination.name !== update.destination.name;
     this.#pointChange(
       UserAction.UPDATE_POINT,
       UpdateType.MINOR,
-      {...this.#point, isFavorite: !this.#point.isFavorite}
+      { ...this.#point, isFavorite: !this.#point.isFavorite }
     );
   };
 
