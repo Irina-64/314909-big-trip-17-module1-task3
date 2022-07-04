@@ -2,7 +2,7 @@ import {
   createElement
 } from '../render.js';
 
-const createEventCreationFormTemplate = () => (
+const createEventFormTemplate = () => (
   `<form class="event event--edit" action="#" method="post">
 		<header class="event__header">
 			<div class="event__type-wrapper">
@@ -87,7 +87,7 @@ const createEventCreationFormTemplate = () => (
 
 export default class EventCreationFormView {
   getTemplate() {
-    return createEventCreationFormTemplate();
+    return createEventFormTemplate();
   }
 
   getElement() {

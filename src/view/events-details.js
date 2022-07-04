@@ -2,7 +2,7 @@ import {
   createElement
 } from '../render.js';
 
-const createEventDetailsTemplate = () => ('<section class="event__details"></section>');
+const createEventDetailsTemplate = () => '<section class="event__details"></section>';
 
 export default class EventDetailsView {
   getTemplate() {
